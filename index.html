@@ -35,12 +35,16 @@
 </head>
 <body>
   <h1>Portfolio Viewer</h1>
-  <button onclick="openFullscreenAndLaunch()">Click to View in Fullscreen</button>
+  <button id="viewBtn">Click to View in Fullscreen</button>
 
   <script>
     const slideURL = "https://docs.google.com/presentation/d/e/2PACX-1vQsxz_K-8qvpKvFgoei3P_VUgEfrvXBQ126I1qH_A2Fh5mdK0OebUIC0snONf0UofOlyRz_-NKOXvt1/pub?rm=minimal";
 
-    function openFullscreenAndLaunch() {
+    document.getElementById("viewBtn").addEventListener("click", () => {
+      // First open the Google Slides in a new tab
+      const newTab = window.open(slideURL, "_blank");
+
+      // Then request fullscreen on the current page
       const elem = document.documentElement;
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
@@ -50,9 +54,11 @@
         elem.msRequestFullscreen();
       }
 
-      // Open presentation in new tab
-      window.open(slideURL, "_blank");
-    }
+      // Fallback message if popup is blocked
+      if (!newTab) {
+        alert("Please enable popups for this site.");
+      }
+    });
   </script>
 </body>
 </html>
