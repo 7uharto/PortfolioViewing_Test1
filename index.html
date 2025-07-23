@@ -41,7 +41,6 @@
     const slideURL = "https://docs.google.com/presentation/d/e/2PACX-1vQsxz_K-8qvpKvFgoei3P_VUgEfrvXBQ126I1qH_A2Fh5mdK0OebUIC0snONf0UofOlyRz_-NKOXvt1/pub?rm=minimal";
 
     function openFullscreenAndLaunch() {
-      // Try to request fullscreen on this page
       const elem = document.documentElement;
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
@@ -51,7 +50,7 @@
         elem.msRequestFullscreen();
       }
 
-      // Then open the presentation in a new tab
+      // Open presentation in new tab
       window.open(slideURL, "_blank");
     }
   </script>
